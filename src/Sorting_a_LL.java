@@ -44,12 +44,60 @@ public class Sorting_a_LL {
                             temp1 = temp1.next;
                         }
                         new_node.next = temp1.next;
-                        temp1 = new_node;
+                        temp1.next = new_node;
                         break;
                 }
             }
             System.out.println("You want to add more data so press 1:");
             n = sc.nextInt();
         } while (n==1);
+    }
+    public void display(){
+        Node temp = head;
+        if (temp==null){
+            System.out.println("The linked list is empty");
+        } else {
+            while (temp!=null){
+                System.out.println(temp.data+"");
+                temp = temp.next;
+            }
+        }
+    }
+    public void sorting() {
+        int c = 0;
+        if (head != null) {
+            Node temp = head;
+            while (temp!= null) {
+                temp = temp.next;
+                c++;
+            }
+            System.out.println("The number of the nodes are: " + c);
+            for (int i = 0; i<c; i++){
+                for (int j = 0; j<c-i-1; j++){
+                    temp = head;
+                    Node temp1 = temp.next;
+                    int d;
+                    if (temp.data>temp1.data){
+                        d = temp.data;
+                        temp1.data = temp.data;
+                        temp.data = d;
+                    }
+                    temp = temp1;
+                    temp1 = temp1.next;
+                }
+            }
+        }
+        System.out.println("The sorted linked list is:");
+        Node temp2 = head;
+        while (temp2!=null){
+            System.out.println(temp2.data+"");
+            temp2 = temp2.next;
+        }
+    }
+    public static void main(String[] args) {
+     Sorting_a_LL ll = new Sorting_a_LL();
+     ll.creation();
+     ll.display();
+     ll.sorting();
     }
 }
